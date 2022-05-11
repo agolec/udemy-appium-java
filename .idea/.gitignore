@@ -1,0 +1,29 @@
+# Default ignored files
+/workspace.xml
+
+#compiled class file
+*.class
+
+#log files
+*.log
+
+# Package files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+#Virtual Machine crash logs.
+hs_err_pid*
+
+.idea
+*.iml
+vcs.xml
+misc.xml
+kotlinCodeInsightSettings.xml
+FirstAppiumProjectMaven.iml
+compiler.xml
+ApiDemos-debug.apk
+

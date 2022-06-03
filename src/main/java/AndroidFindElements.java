@@ -1,45 +1,46 @@
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.appmanagement.AndroidInstallApplicationOptions;
+import io.appium.java_client.android.appmanagement.AndroidTerminateApplicationOptions;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.touch.TouchActions;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.Dimension;
 
+import java.io.File;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class AndroidFindElements {
-
     public static void main(String[] args) throws Exception {
+
         AppiumDriver driver =  CreateDriverSession.initializeDriver("Android");
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 
-        By accessibility = MobileBy.AccessibilityId("Accessibility");
-        System.out.println("text: " + driver.findElement(accessibility).getText());
-        System.out.println("text: " + driver.findElement(accessibility).getAttribute("text"));
+        By views = MobileBy.AccessibilityId("Views");
+        driver.findElement(views).click();
 
-        String isChecked = "";
-        String isEnabled = "";
-        String isSelected = "";
-
-        isChecked = driver.findElement(accessibility).getAttribute("checked");
-        isEnabled = driver.findElement(accessibility).getAttribute("enabled");
-        isSelected = driver.findElement(accessibility).getAttribute("selected");
-        checkAttribute(isChecked);
-        checkAttribute(isEnabled);
-        checkAttribute(isSelected);
-
-    }
-
-    private static void checkAttribute(String booleanValue) {
-        if(booleanValue.equalsIgnoreCase("false")){
-            System.out.println(booleanValue);
-        } else {
-            System.out.println(booleanValue);
-        }
+        ((AndroidDriver) driver).lockDevice();
+        System.out.println(((AndroidDriver) driver).isDeviceLocked());
+        ((AndroidDriver) driver).unlockDevice();
+        //String andAppUrl = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main"
+         //       + File.separator + "resources" + File.separator + "ApiDemos-debug.apk";
+        //driver.installApp(andAppUrl, new AndroidInstallApplicationOptions().withReplaceEnabled());
+/*
+        Dimension size = driver.manage().window().getSize();
+        int startX = size.height / 2;
+        int endX = startX;
+        int startY = (int) (size.height * 0.8);
+        int endY = (int) (size.height * 0.2);
+            TouchAction t = new TouchAction(driver);
+            t.press(ElementOption.element(driver.findElement(grid)))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(2000)))
+                    .moveTo(ElementOption.element(driver.findElement(animation)))
+                    .release()
+                    .perform();
+*/
     }
 }

@@ -16,15 +16,6 @@ import java.util.concurrent.TimeUnit;
 public class TestCases {
     AppiumDriver driver;
 
-    // Test to just check that TestNG works.
-    //Will print out 20 . symbols and between generating these,
-    //it will wait a random number of milliseconds (upper bound 500, or half a second,
-    //before printing the next . symbol.
-    @Test
-    void setup() throws InterruptedException {
-
-    }
-
     @Test
     public void invalidUserName() {
         MobileElement userNameTxtFld = (MobileElement) driver.findElementByAccessibilityId("test-Username");

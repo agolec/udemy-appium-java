@@ -33,6 +33,7 @@ public class CreateDriverSession {
                         + File.separator + "resources" + File.separator + "ApiDemos-debug.apk";
                 caps.setCapability("appPackage","io.appium.android.apis");
                 caps.setCapability("appActivity","io.appium.android.apis.ApiDemos");
+                System.out.println("Setting the chrome driver executable?");
                 return new AndroidDriver(url, caps);
             case 2:
                 caps.setCapability(MobileCapabilityType.DEVICE_NAME,"iPhone 11");

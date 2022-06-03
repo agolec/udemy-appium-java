@@ -24,7 +24,7 @@ public class LoginTests extends BaseTest {
     @BeforeMethod
     public void beforeMethod(Method method){
         loginPage = new LoginPage();
-        //System.out.println("\n" + "****** Starting test:" + method.getName() + "*****" + "\n");
+        System.out.println("\n" + "****** Starting test:" + method.getName() + "*****" + "\n");
     }
     @AfterMethod
     public void afterMethod(){
@@ -40,8 +40,6 @@ public class LoginTests extends BaseTest {
         System.out.println("Actual error text:" + actualErrorText + "\n" + "Expected Error text: " + expectedErrorText);
 
         Assert.assertEquals(actualErrorText,expectedErrorText);
-
-
     }
 
     @Test

@@ -20,7 +20,7 @@ import java.util.Properties;
 
 public class BaseTest {
     protected static AppiumDriver driver;
-    protected Properties props;
+    protected static Properties props;
     InputStream inputStream;
 
     public BaseTest(){
@@ -34,26 +34,18 @@ public class BaseTest {
         try {
             //instantiate a new Properties object.
             props = new Properties();
-            String propFileName = "config.properties";
+            final String PROPERTY_FILE_NAME = "config.properties";
             //created an inputStream for our config file.
-            inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+            inputStream = getClass().getClassLoader().getResourceAsStream(PROPERTY_FILE_NAME);
             props.load(inputStream);
 
             DesiredCapabilities caps = new DesiredCapabilities();
-            //caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
             caps.setCapability(MobileCapabilityType.PLATFORM_NAME, platformName);
-            //caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.0");
             caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, platformVersion);
-            //caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Any Device Name");
             caps.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
-            //caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
             caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, props.getProperty("androidAutomationName"));
-            //caps.setCapability("appPackage", "com.swaglabsmobileapp");
             caps.setCapability("appPackage", props.getProperty("androidAppPackage"));
-            //caps.setCapability("appActivity", "com.swaglabsmobileapp.SplashActivity");
             caps.setCapability("appActivity", props.getProperty("androidAppActivity"));
-            //caps.setCapability("avd","Pixel_2");
-            //caps.setCapability("app","C:\\Users\\agolec\\Downloads\\Android.SauceLabs.Mobile.Sample.app.2.7.1.apk");
             URL appURL = getClass().getClassLoader().getResource(props.getProperty("androidAppLocation"));
             caps.setCapability("app",appURL);
             caps.setCapability("appWaitActivity", "com.swaglabsmobileapp.MainActivity");
